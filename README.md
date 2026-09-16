@@ -4,7 +4,6 @@ A modern, sleek glassmorphic personal web portal featuring an interactive real-t
 
 - **Author**: Guowei Li (李國維)
 - **Course Assignment**: DIC 1 (Do It Class 1)
-- **Live Demo**: [https://jiwawa1006.github.io/0916/](https://jiwawa1006.github.io/0916/)
 
 > **Live Demo:** [https://jiwawa1006.github.io/0916/](https://jiwawa1006.github.io/0916/)
 
