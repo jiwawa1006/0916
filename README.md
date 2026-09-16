@@ -2,8 +2,7 @@
 
 A modern, sleek glassmorphic personal website featuring a dynamic real-time clock, time-aware greeting system, and interactive responsive design.
 
-> **Live Demo:** [https://jiwawa1006.github.io/0916/](https://jiwawa1006.github.io/0916/)  
-> **GitHub Repository:** [https://github.com/jiwawa1006/0916](https://github.com/jiwawa1006/0916)
+> **Live Demo:** [https://jiwawa1006.github.io/0916/](https://jiwawa1006.github.io/0916/)
 
 <p align="center">
   <img src="./preview.png" alt="Guowei Li - Personal Website Preview" width="100%">
