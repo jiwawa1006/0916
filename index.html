@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh-TW" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>李國維 | 個人專屬網站</title>
-  <meta name="description" content="李國維的個人官方網站，提供即時時鐘、個人簡介與專業連結。">
-  <meta name="author" content="李國維">
+  <title>Guowei Li | Personal Website</title>
+  <meta name="description" content="Official personal website of Guowei Li, featuring dynamic real-time clock, profile, and interactive showcase.">
+  <meta name="author" content="Guowei Li">
   
-  <!-- Google Fonts: Noto Sans TC, Plus Jakarta Sans, JetBrains Mono -->
+  <!-- Google Fonts: Inter, Plus Jakarta Sans, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Phosphor Icons -->
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
@@ -28,15 +28,15 @@
     <!-- Navigation Header -->
     <header class="site-header">
       <div class="brand">
-        <span class="brand-logo-mark">KW</span>
-        <span class="brand-name">李國維</span>
+        <span class="brand-logo-mark">GL</span>
+        <span class="brand-name">Guowei Li</span>
         <span class="status-badge">
           <span class="status-dot"></span>
-          <span class="status-text">在線中</span>
+          <span class="status-text">Online</span>
         </span>
       </div>
       <div class="header-actions">
-        <button id="themeToggleBtn" class="action-btn theme-toggle" title="切換深色 / 淺色模式" aria-label="切換主題">
+        <button id="themeToggleBtn" class="action-btn theme-toggle" title="Toggle Dark / Light Mode" aria-label="Toggle theme">
           <i class="ph ph-moon" id="themeIcon"></i>
         </button>
       </div>
@@ -50,22 +50,22 @@
           <div class="avatar-wrapper">
             <div class="avatar-ring"></div>
             <div class="avatar-img-box">
-              <span class="avatar-initials">維</span>
+              <span class="avatar-initials">GL</span>
             </div>
           </div>
           <div class="hero-text">
             <div class="greeting-badge" id="greetingBadge">
               <i class="ph-fill ph-sun" id="greetingIcon"></i>
-              <span id="greetingText">早安，歡迎蒞臨</span>
+              <span id="greetingText">Good morning, Welcome</span>
             </div>
-            <h1 class="user-name">李國維 <span class="name-en">Guowei Li</span></h1>
-            <p class="hero-subtitle">熱愛科技、持續探索與創造價值的全方位實踐者</p>
+            <h1 class="user-name">Guowei Li</h1>
+            <p class="hero-subtitle">Passionate technologist, lifelong learner, and creative problem solver committed to building elegant solutions.</p>
           </div>
         </div>
       </section>
 
       <!-- Real-Time Clock Dashboard Widget -->
-      <section class="clock-dashboard" aria-label="即時時間儀表板">
+      <section class="clock-dashboard" aria-label="Live System Clock Dashboard">
         <div class="dashboard-card clock-card">
           <div class="card-header">
             <div class="card-title-group">
@@ -73,13 +73,13 @@
                 <i class="ph-bold ph-clock"></i>
               </div>
               <div>
-                <h2 class="card-title">即時系統時間</h2>
-                <p class="card-desc">動態即時更新 · 台北標準時間 (UTC+8)</p>
+                <h2 class="card-title">Live System Clock</h2>
+                <p class="card-desc">Real-time dynamic updates · Taipei Standard Time (UTC+8)</p>
               </div>
             </div>
             <div class="clock-controls">
-              <button id="clockFormatBtn" class="pill-toggle" title="點擊切換 12 / 24 小時制">
-                <span class="toggle-label">格式：</span>
+              <button id="clockFormatBtn" class="pill-toggle" title="Click to toggle 12 / 24 hour format">
+                <span class="toggle-label">Format:</span>
                 <span class="toggle-mode" id="formatModeDisplay">24H</span>
               </button>
             </div>
@@ -90,17 +90,17 @@
             <div class="digital-clock" id="digitalClock">
               <div class="time-unit">
                 <span class="time-digit" id="hourDigit">00</span>
-                <span class="unit-label">時 (HOURS)</span>
+                <span class="unit-label">HOURS</span>
               </div>
               <span class="time-colon">:</span>
               <div class="time-unit">
                 <span class="time-digit" id="minuteDigit">00</span>
-                <span class="unit-label">分 (MINUTES)</span>
+                <span class="unit-label">MINUTES</span>
               </div>
               <span class="time-colon">:</span>
               <div class="time-unit">
                 <span class="time-digit highlight-digit" id="secondDigit">00</span>
-                <span class="unit-label">秒 (SECONDS)</span>
+                <span class="unit-label">SECONDS</span>
               </div>
               <span class="time-ampm" id="ampmIndicator" style="display: none;">AM</span>
             </div>
@@ -109,24 +109,24 @@
             <div class="date-info-bar">
               <div class="date-item">
                 <i class="ph-bold ph-calendar"></i>
-                <span id="fullDateDisplay">2026 年 09 月 16 日</span>
+                <span id="fullDateDisplay">September 16, 2026</span>
               </div>
               <div class="date-separator">•</div>
               <div class="date-item">
                 <i class="ph-bold ph-calendar-check"></i>
-                <span id="dayOfWeekDisplay">星期三</span>
+                <span id="dayOfWeekDisplay">Wednesday</span>
               </div>
               <div class="date-separator">•</div>
               <div class="date-item">
                 <i class="ph-bold ph-hourglass-high"></i>
-                <span id="dayOfYearDisplay">第 259 天</span>
+                <span id="dayOfYearDisplay">Day 259</span>
               </div>
             </div>
 
             <!-- Progress through the day -->
             <div class="day-progress-container">
               <div class="day-progress-header">
-                <span>今日進度 (Day Progress)</span>
+                <span>Day Progress</span>
                 <span id="dayProgressPercent">0%</span>
               </div>
               <div class="progress-bar-bg">
@@ -144,15 +144,15 @@
           <div class="info-card-icon">
             <i class="ph-fill ph-user"></i>
           </div>
-          <h3 class="info-card-title">關於我</h3>
+          <h3 class="info-card-title">About Me</h3>
           <p class="info-card-text">
-            我是<strong>李國維</strong>。熱衷於將創意與科技緊密結合，追求細節與卓越的使用者體驗。秉持持續學習與開放探索的熱情，迎接每一個嶄新的挑戰。
+            Hello! I am <strong>Guowei Li (李國維)</strong>. I enjoy turning creative ideas into impactful digital experiences with attention to detail and modern web standards. Always curious, driven by continuous growth and new challenges.
           </p>
           <div class="tag-cloud">
-            <span class="tag"><i class="ph ph-lightning"></i> 創新思維</span>
-            <span class="tag"><i class="ph ph-code"></i> 數位科技</span>
-            <span class="tag"><i class="ph ph-compass"></i> 探索未知</span>
-            <span class="tag"><i class="ph ph-sparkle"></i> 質感生活</span>
+            <span class="tag"><i class="ph ph-lightning"></i> Innovation</span>
+            <span class="tag"><i class="ph ph-code"></i> Modern Tech</span>
+            <span class="tag"><i class="ph ph-compass"></i> Continuous Learning</span>
+            <span class="tag"><i class="ph ph-sparkle"></i> Creative Design</span>
           </div>
         </article>
 
@@ -161,27 +161,27 @@
           <div class="info-card-icon highlight-purple">
             <i class="ph-fill ph-shooting-star"></i>
           </div>
-          <h3 class="info-card-title">核心專注領域</h3>
+          <h3 class="info-card-title">Core Focus Areas</h3>
           <ul class="feature-list">
             <li>
               <div class="feature-dot"></div>
               <div>
-                <strong>科技創新與數位應用</strong>
-                <p>運用現代技術解決真實問題，打造流暢體驗。</p>
+                <strong>Technology & Web Engineering</strong>
+                <p>Creating responsive, elegant, and user-centric web applications.</p>
               </div>
             </li>
             <li>
               <div class="feature-dot"></div>
               <div>
-                <strong>持續學習與知識管理</strong>
-                <p>保持對新興趨勢的敏銳度，轉化洞察為實踐行動。</p>
+                <strong>Continuous Exploration & Knowledge</strong>
+                <p>Staying at the forefront of emerging technologies and practical solutions.</p>
               </div>
             </li>
             <li>
               <div class="feature-dot"></div>
               <div>
-                <strong>跨領域思維與協作</strong>
-                <p>融合多元觀點，驅動具影響力的目標成果。</p>
+                <strong>Problem Solving & Collaboration</strong>
+                <p>Combining interdisciplinary thinking to deliver meaningful outcomes.</p>
               </div>
             </li>
           </ul>
@@ -192,16 +192,16 @@
       <section class="connect-section">
         <div class="connect-card">
           <div class="connect-content">
-            <h3 class="connect-title">與李國維取得聯繫</h3>
-            <p class="connect-desc">歡迎交流與合作，隨時透過以下方式聯絡我：</p>
+            <h3 class="connect-title">Connect with Guowei Li</h3>
+            <p class="connect-desc">Interested in collaborating or have a question? Feel free to reach out:</p>
             <div class="social-links">
-              <a href="mailto:contact@example.com" class="social-btn" id="emailContactBtn" title="發送電子郵件">
+              <a href="mailto:contact@example.com" class="social-btn" id="emailContactBtn" title="Send an Email">
                 <i class="ph-fill ph-envelope-simple"></i>
-                <span>電子郵件</span>
+                <span>Email Me</span>
               </a>
-              <button class="social-btn" id="copyShareBtn" title="複製本頁分享連結">
+              <button class="social-btn" id="copyShareBtn" title="Copy Website Link">
                 <i class="ph-bold ph-share-network"></i>
-                <span id="copyShareText">分享網站</span>
+                <span id="copyShareText">Share Website</span>
               </button>
             </div>
           </div>
@@ -211,7 +211,7 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-      <p>© <span id="currentYear">2026</span> 李國維 (Guowei Li). 保留所有權利。</p>
+      <p>© <span id="currentYear">2026</span> Guowei Li (李國維). All rights reserved.</p>
       <p class="footer-note">Designed with precision & aesthetic elegance.</p>
     </footer>
   </div>
@@ -219,7 +219,7 @@
   <!-- Toast Notification -->
   <div class="toast" id="toastNotification" role="alert" aria-live="polite">
     <i class="ph-bold ph-check-circle" id="toastIcon"></i>
-    <span id="toastMessage">已成功複製連結！</span>
+    <span id="toastMessage">Website link copied to clipboard!</span>
   </div>
 
   <script src="script.js"></script>

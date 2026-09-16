@@ -1,5 +1,5 @@
 /**
- * 李國維 (Li Guo-wei) 個人網站 - 核心互動邏輯
+ * Guowei Li (李國維) - Personal Website Core Script
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const dayOfYearDisplay = document.getElementById('dayOfYearDisplay');
   const dayProgressBar = document.getElementById('dayProgressBar');
   const dayProgressPercent = document.getElementById('dayProgressPercent');
-  const greetingBadge = document.getElementById('greetingBadge');
   const greetingText = document.getElementById('greetingText');
   const greetingIcon = document.getElementById('greetingIcon');
   const currentYearSpan = document.getElementById('currentYear');
@@ -29,89 +28,93 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // State
   let is24HourFormat = localStorage.getItem('kw_clock_format') !== '12h'; // default 24h
-  const weekDays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+  const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
 
   // ==========================================================================
-  // 1. 即時時鐘與日期更新邏輯
+  // 1. Live Clock & Date Update Logic
   // ==========================================================================
   function updateClock() {
     const now = new Date();
 
-    // 時間數值
+    // Time values
     let hours = now.getHours();
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
 
-    // 12/24 小時制判斷
+    // 12 / 24 hour mode handling
     let ampmText = '';
     if (!is24HourFormat) {
       ampmText = hours >= 12 ? 'PM' : 'AM';
       hours = hours % 12;
-      hours = hours ? hours : 12; // 0點轉為 12
+      hours = hours ? hours : 12; // 0 becomes 12
       ampmIndicator.style.display = 'inline-block';
       ampmIndicator.textContent = ampmText;
     } else {
       ampmIndicator.style.display = 'none';
     }
 
-    // 數字補零格式化
+    // Number zero padding
     const formattedHours = String(hours).padStart(2, '0');
     const formattedMinutes = String(minutes).padStart(2, '0');
     const formattedSeconds = String(seconds).padStart(2, '0');
 
-    // 渲染時鐘數字
+    // Render digits
     if (hourDigit.textContent !== formattedHours) hourDigit.textContent = formattedHours;
     if (minuteDigit.textContent !== formattedMinutes) minuteDigit.textContent = formattedMinutes;
     secondDigit.textContent = formattedSeconds;
 
-    // 日期顯示 (年、月、日)
+    // Date display (Month Day, Year)
     const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const date = String(now.getDate()).padStart(2, '0');
-    fullDateDisplay.textContent = `${year} 年 ${month} 月 ${date} 日`;
+    const month = monthNames[now.getMonth()];
+    const date = now.getDate();
+    fullDateDisplay.textContent = `${month} ${date}, ${year}`;
     if (currentYearSpan) currentYearSpan.textContent = year;
 
-    // 星期顯示
+    // Day of the week
     dayOfWeekDisplay.textContent = weekDays[now.getDay()];
 
-    // 一年中的第幾天 (Day of the year)
+    // Day of the year
     const startOfYear = new Date(now.getFullYear(), 0, 0);
     const diff = now - startOfYear;
     const oneDay = 1000 * 60 * 60 * 24;
     const dayOfYear = Math.floor(diff / oneDay);
-    dayOfYearDisplay.textContent = `第 ${dayOfYear} 天`;
+    dayOfYearDisplay.textContent = `Day ${dayOfYear}`;
 
-    // 當日進度百分比 (Day Progress)
+    // Day Progress (%)
     const totalSecondsToday = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
     const percentToday = ((totalSecondsToday / 86400) * 100).toFixed(1);
     dayProgressPercent.textContent = `${percentToday}%`;
     dayProgressBar.style.width = `${percentToday}%`;
 
-    // 動態問候語 (根據時段自動變換)
+    // Dynamic greeting based on time of day
     updateGreeting(now.getHours());
   }
 
   // ==========================================================================
-  // 2. 時段問候語系統
+  // 2. Smart Time-Aware Greeting
   // ==========================================================================
   function updateGreeting(hour) {
     let greeting = '';
     let iconClass = 'ph-fill ';
 
     if (hour >= 5 && hour < 11) {
-      greeting = '早安，李國維！迎接美好充滿活力的一天';
+      greeting = 'Good morning, Guowei Li! Wishing you a productive and energetic day.';
       iconClass += 'ph-sun';
     } else if (hour >= 11 && hour < 14) {
-      greeting = '午安，李國維！享受美味午餐與充實時光';
+      greeting = 'Good day, Guowei Li! Hope you are having a wonderful afternoon.';
       iconClass += 'ph-sun-horizon';
     } else if (hour >= 14 && hour < 18) {
-      greeting = '下午好，李國維！保持專注與探索的熱情';
+      greeting = 'Good afternoon, Guowei Li! Keep up the momentum and focus.';
       iconClass += 'ph-sun-dim';
     } else if (hour >= 18 && hour < 23) {
-      greeting = '晚安，李國維！放鬆身心享受美好的夜晚';
+      greeting = 'Good evening, Guowei Li! Relax and unwind after a great day.';
       iconClass += 'ph-moon-stars';
     } else {
-      greeting = '夜深了，李國維！記得適度休息保重身體';
+      greeting = 'Working late, Guowei Li? Remember to take care and rest well.';
       iconClass += 'ph-moon';
     }
 
@@ -122,28 +125,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 3. 12 / 24 小時制切換
+  // 3. 12 / 24 Hour Format Toggle
   // ==========================================================================
   clockFormatBtn.addEventListener('click', () => {
     is24HourFormat = !is24HourFormat;
     formatModeDisplay.textContent = is24HourFormat ? '24H' : '12H';
     localStorage.setItem('kw_clock_format', is24HourFormat ? '24h' : '12h');
     updateClock();
-    showToast(`已切換為 ${is24HourFormat ? '24' : '12'} 小時制`);
+    showToast(`Switched to ${is24HourFormat ? '24' : '12'}-Hour format`);
   });
 
-  // 初始化按鈕文字
+  // Initialize button text
   formatModeDisplay.textContent = is24HourFormat ? '24H' : '12H';
 
   // ==========================================================================
-  // 4. 深色 / 淺色主題切換
+  // 4. Dark / Light Theme Toggle
   // ==========================================================================
   const savedTheme = localStorage.getItem('kw_theme');
   if (savedTheme) {
     document.documentElement.setAttribute('data-theme', savedTheme);
     applyThemeIcon(savedTheme);
   } else {
-    // 偵測系統設定
+    // Detect system preference
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const initialTheme = prefersDark ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', initialTheme);
@@ -157,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('kw_theme', newTheme);
     applyThemeIcon(newTheme);
-    showToast(`已切換為${newTheme === 'dark' ? '深色' : '淺色'}模式`);
+    showToast(`Switched to ${newTheme === 'dark' ? 'Dark' : 'Light'} mode`);
   });
 
   function applyThemeIcon(theme) {
@@ -169,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 5. 分享按鈕與 Toast 提示
+  // 5. Share Button & Toast Notification
   // ==========================================================================
   let toastTimer = null;
   function showToast(message) {
@@ -186,17 +189,17 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       if (navigator.clipboard && window.location.href) {
         await navigator.clipboard.writeText(window.location.href);
-        showToast('已複製李國維個人網站連結！');
+        showToast('Website link copied to clipboard!');
       } else {
-        showToast('網站連結：' + window.location.href);
+        showToast('Website: ' + window.location.href);
       }
     } catch (err) {
-      showToast('歡迎參觀李國維的個人網站！');
+      showToast('Welcome to Guowei Li\'s personal website!');
     }
   });
 
   // ==========================================================================
-  // 6. 啟動計時器
+  // 6. Start Live Clock
   // ==========================================================================
   updateClock();
   setInterval(updateClock, 1000);
