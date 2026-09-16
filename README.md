@@ -5,7 +5,8 @@ A modern, sleek glassmorphic personal web portal featuring an interactive real-t
 - **Author**: Guowei Li (李國維)
 - **Course Assignment**: DIC 1 (Do It Class 1)
 
-> **Live Demo:** [https://jiwawa1006.github.io/0916/](https://jiwawa1006.github.io/0916/)
+> **Live Demo:** [https://jiwawa1006.github.io/DIC1_PersonalPage/](https://jiwawa1006.github.io/DIC1_PersonalPage/)  
+*(Template URL: `https://YOUR_NAME.github.io/DIC1_PersonalPage/`)*
 
 <p align="center">
   <img src="./preview.png" alt="Guowei Li - Personal Website Preview" width="100%">
@@ -57,13 +58,13 @@ flowchart TD
     subgraph S4["4. Version Control (Git)"]
         H --> I["Git Initialization<br/>git init & configure local identity"]
         I --> J["Staging & Initial Commit<br/>git add . & git commit"]
-        J --> K["Remote Origin Binding<br/>github.com/jiwawa1006/0916.git"]
+        J --> K["Remote Origin Binding<br/>github.com/jiwawa1006/DIC1_PersonalPage.git"]
     end
 
     %% Stage 5
     subgraph S5["5. Cloud Deployment & CI/CD"]
         K --> L["Push to Remote<br/>git push -u origin main"]
-        L --> M["GitHub Pages Activation<br/>Hosted at jiwawa1006.github.io/0916/"]
+        L --> M["GitHub Pages Activation<br/>Hosted at jiwawa1006.github.io/DIC1_PersonalPage/"]
     end
 
     %% Stage 6
